@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resim Galerisi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #gallery {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 10px;
+      margin-top: 20px;
+    }
+    .gallery-img {
+      width:
+      height:
+      object-fit: cover;
+      cursor: pointer;
+    }
+    h1 {
+      font-size: 36px;
+      text-align: center;
+  </style>
+</head>
+<body>
+  <h1>Resim Galerisi</h1>
+
+<div id="gallery"></div>
+
+<script>
+  const imageCount = 15; 
+  const gallery = document.getElementById("gallery");
+
+  function displayRandomMaviImages() {
+    gallery.innerHTML = ''; 
+    for (let i = 0; i < imageCount; i++) {
+      const img = document.createElement("img");
+      const randomWidth = Math.floor(Math.random() * (1000 - 300) + 300);
+      const randomHeight = Math.floor(Math.random() * (800 - 300) + 300);
+      img.src = `https://source.unsplash.com/${randomWidth}x${randomHeight}/?blue`; 
+      img.classList.add("gallery-img");
+      img.addEventListener("click", () => {
+        console.log("Tıklanan resim: ", img.src);
+      });
+      gallery.appendChild(img);
+    }
+  }
+
+
+  window.onload = displayRandomMaviImages;
+  window.onbeforeunload = displayRandomMaviImages;
+
+</script>
+
+</body>
+</html>
